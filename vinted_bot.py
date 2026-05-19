@@ -19,14 +19,17 @@ KEYWORDS = [
 
 bot = Bot(token=BOT_TOKEN)
 
-seen = set()
-
 print("🚀 Bot Vinted lancé")
 
+bot.send_message(
+    chat_id=CHAT_ID,
+    text="✅ BOT CONNECTÉ"
+)
+
+seen = set()
+
 while True:
-
     try:
-
         r = requests.get(
             SEARCH_URL,
             headers={
@@ -39,7 +42,6 @@ while True:
         links = soup.find_all("a")
 
         for link in links:
-
             href = link.get("href")
 
             if not href:
@@ -78,5 +80,3 @@ while True:
     except Exception as e:
         print("Erreur :", e)
         time.sleep(30)
-
-
