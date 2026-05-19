@@ -1,7 +1,6 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-from telegram import Bot
 
 BOT_TOKEN = "8577522450:AAESsRExdGK-BIlas1lNwn-UHiGQ6vGCW4s"
 CHAT_ID = "2146109835"
@@ -17,14 +16,19 @@ KEYWORDS = [
     "revan"
 ]
 
-bot = Bot(token=BOT_TOKEN)
+def send_telegram(message):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+    data = {
+        "chat_id": CHAT_ID,
+        "text": message
+    }
+
+    requests.post(url, data=data)
 
 print("🚀 Bot Vinted lancé")
 
-bot.send_message(
-    chat_id=CHAT_ID,
-    text="✅ BOT CONNECTÉ"
-)
+send_telegram("✅ BOT CONNECTÉ")
 
 seen = set()
 
@@ -63,16 +67,12 @@ while True:
 
             seen.add(href)
 
-            full_link = (
-                "https://www.vinted.fr"
-                + href
-            )
+            full_link = "https://www.vinted.fr" + href
 
             print("🔥", title)
 
-            bot.send_message(
-                chat_id=CHAT_ID,
-                text=f"🔥 LEGO trouvé\n\n{title}\n\n{full_link}"
+            send_telegram(
+                f"🔥 LEGO trouvé\n\n{title}\n\n{full_link}"
             )
 
         time.sleep(60)
