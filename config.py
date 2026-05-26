@@ -14,9 +14,9 @@ BRANDS = [
         "vintage",
         "spellout"
     ],
-    "max_price": 250,
-    "min_score": 72,
-    "max_risk": 30,
+    "max_price": 80,
+    "min_score": 8,
+    "max_risk": 3,
     "manual_check_only": True
 },
 
