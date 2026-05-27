@@ -15,6 +15,7 @@ def scrape():
         page = browser.new_page()
 
         print("🔥 BOT VINTED PRO lancé")
+        send_telegram_message("TEST TELEGRAM OK")
 
         while True:
 
