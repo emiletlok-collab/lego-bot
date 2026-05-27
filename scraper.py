@@ -63,22 +63,22 @@ def scrape():
 
                         score, risk = score_item(item, brand)
 
-                        if score < brand["min_score"]:
-                            continue
+                        # TEMP TEST
+                        score = 100
+                        risk = 0
 
-                        if risk > brand["max_risk"]:
-                            continue
+                        print("SCORE =", score)
+                        print("RISK =", risk)
 
                         text = f"""
-🔥 BON DEAL DÉTECTÉ
+                       🔥 BON DEAL DÉTECTÉ
 
-🏷️ {brand['name']}
-⭐ Score : {score}/100
-⚠️ Risque : {risk}/100
+                       🏷️ {brand['name']}
+                       ⭐ Score : {score}/100
+                       ⚠️ Risque : {risk}/100
 
-🔗 {link}
-"""
-
+                       🔗 {link}
+                       """
                         print("MESSAGE ENVOYE")
 
                         send_telegram_message(text)
