@@ -44,6 +44,8 @@ def scrape():
 
                         seen.add(link)
 
+                        print(link)
+
                         title = link.lower()
 
                         if not any(
@@ -76,7 +78,7 @@ def scrape():
 🔗 {link}
 """
 
-                        print(text)
+                        print("MESSAGE ENVOYE")
 
                         send_telegram_message(text)
 
