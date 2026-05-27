@@ -49,12 +49,6 @@ def scrape():
 
                         title = link.replace("-", " ").lower()
 
-                        if not any(
-                            keyword.lower() in title
-                            for keyword in brand["keywords"]
-                        ):
-                            continue
-
                         item = {
                             "title": title,
                             "price": brand["max_price"] * 0.5,
