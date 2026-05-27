@@ -46,7 +46,7 @@ def scrape():
 
                         print(link)
 
-                        title = link.lower()
+                        title = link.replace("-", " ").lower()
 
                         if not any(
                             keyword.lower() in title
