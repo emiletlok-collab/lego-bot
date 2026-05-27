@@ -1,32 +1,23 @@
 from playwright.sync_api import sync_playwright
 import time
 from config import BRANDS
-from scoring import score_item
 from telegram_utils import send_telegram_message
 
 seen = set()
 
 def scrape():
-
     with sync_playwright() as p:
-
         browser = p.chromium.launch(headless=True)
-
         page = browser.new_page()
 
-        print("🔥 BOT VINTED PRO lancé")
-        send_telegram_message("TEST TELEGRAM OK")
+        print("🚀 BOT VINTED PRO lancé")
+        send_telegram_message("TEST DEPLOY OK")
 
         while True:
-
             try:
-
                 for brand in BRANDS:
-
                     url = f"https://www.vinted.fr/catalog?search_text={brand['query']}"
-
                     page.goto(url)
-           
                     time.sleep(5)
 
                     links = page.locator("a").evaluate_all(
@@ -36,7 +27,6 @@ def scrape():
                     print(f"{brand['name']} -> {len(links)} liens")
 
                     for link in links:
-
                         if "/items/" not in link:
                             continue
 
@@ -47,36 +37,15 @@ def scrape():
 
                         print(link)
 
-                        title = link.replace("-", " ").lower()
-
-                        item = {
-                            "title": title,
-                            "price": brand["max_price"] * 0.5,
-                            "brand": brand["name"]
-                        }
-
-                        score, risk = score_item(item, brand)
-
-                        # TEMP TEST
-                        score = 100
-                        risk = 0
-
-                        print("SCORE =", score)
-                        print("RISK =", risk)
-
                         text = f"""
-                       🔥 BON DEAL DÉTECTÉ
+TEST VINTED
 
-                       🏷️ {brand['name']}
-                       ⭐ Score : {score}/100
-                       ⚠️ Risque : {risk}/100
+🏷️ {brand['name']}
+🔗 {link}
+"""
 
-                       🔗 {link}
-                       """
-                        print("MESSAGE ENVOYE")
-
+                        print("MESSAGE ENVOYÉ")
                         send_telegram_message(text)
-
                         time.sleep(2)
 
                 time.sleep(30)
@@ -84,4 +53,3 @@ def scrape():
             except Exception as e:
                 print("ERREUR :", e)
                 time.sleep(10)
-
