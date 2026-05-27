@@ -25,7 +25,7 @@ def scrape():
                     url = f"https://www.vinted.fr/catalog?search_text={brand['query']}"
 
                     page.goto(url)
-
+           
                     time.sleep(5)
 
                     links = page.locator("a").evaluate_all(
@@ -87,6 +87,6 @@ def scrape():
                 time.sleep(30)
 
             except Exception as e:
-                print(e)
+                print("ERREUR :", e)
                 time.sleep(10)
 
