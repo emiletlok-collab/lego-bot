@@ -15,8 +15,8 @@ BRANDS = [
         "spellout"
     ],
     "max_price": 80,
-    "min_score": 8,
-    "max_risk": 3,
+    "min_score": 0,
+    "max_risk": 999,
     "manual_check_only": True
 },
 
