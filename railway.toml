@@ -1,6 +1,7 @@
 [build]
-builder = "NIXPACKS"
+builder = "RAILPACK"
+buildCommand = null
 
 [deploy]
-startCommand = "playwright install chromium && python3 vinted_bot.py"
+startCommand = "python3 vinted_bot.py"
 restartPolicyType = "ON_FAILURE"
