@@ -25,6 +25,8 @@ def scrape():
                     )
 
                     print(f"{brand['name']} -> {len(links)} liens")
+                       
+                    print(links[:20])                    
 
                     for link in links:
                         if "/items/" not in link:
