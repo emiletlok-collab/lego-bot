@@ -1,6 +1,5 @@
 [build]
 builder = "RAILPACK"
-buildCommand = null
 
 [deploy]
 startCommand = "python3 vinted_bot.py"
